@@ -39,45 +39,40 @@ public class KIaB2014 {
     for (int j = 0; j < size; j++) {
       for (int i = size - 1; i > 0; i--) {
         if (board[j][i] == 0) {
-          for (int k = i; k >= 0; k--) {
-            if (board[j][k] != 0) {
-              for (int y = k; y >= 0; y--) {
-                for (int o = 0; o <= k; o++) {
-                  try {
-                    board[j][i - o] = board[j][y - o];
-                  } catch (ArrayIndexOutOfBoundsException en) {};
-                }
-              }
+          for (int w = i; w >= 0; w--) {
+            if (board[j][w] != 0) {
+              board[j][i] = board[j][w];
+              board[j][w] = 0;
+              break;
             }
           }
 
-        } else {
-          int k = 1;
-          while (k <= i) {
-            if (board[j][i - k] != 0) {
-              if (board[j][i - k] == board[j][i]) {
-                // try {
-                board[j][i] *= 2;
-                board[j][i - k] = 0;
-                for (int l = i - 1; l >= 0; l--) {
-                  try {
-                    board[j][l] = board[j][l - 1];
-                  } catch (ArrayIndexOutOfBoundsException en) {
-                    board[j][l] = 0;
-                  }
-                  ;
+        }
+        int k = 1;
+        while (k <= i) {
+          if (board[j][i - k] != 0) {
+            if (board[j][i - k] == board[j][i]) {
+              // try {
+              board[j][i] *= 2;
+              board[j][i - k] = 0;
+              for (int l = i - 1; l >= 0; l--) {
+                try {
+                  board[j][l] = board[j][l - 1];
+                } catch (ArrayIndexOutOfBoundsException en) {
+                  board[j][l] = 0;
                 }
-                //  } catch (ArrayIndexOutOfBoundsException en) {};
-              } else {
-                if (k != 1) {
-                  board[j][i - 1] = board[j][i - k];
-                  board[j][i - k] = 0;
-                }
+                ;
               }
-              break;
+              //  } catch (ArrayIndexOutOfBoundsException en) {};
+            } else {
+              if (k != 1) {
+                board[j][i - 1] = board[j][i - k];
+                board[j][i - k] = 0;
+              }
             }
-            k++;
+            break;
           }
+          k++;
         }
       }
     }
