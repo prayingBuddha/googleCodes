@@ -1,7 +1,5 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Contest {
 
@@ -28,7 +26,7 @@ public class Contest {
     return possibls;
   }
 
-  public ArrayList<Integer> remains(String toConvert, ArrayList<Integer> s) {
+  private ArrayList<Integer> remains(String toConvert, ArrayList<Integer> s) {
     ArrayList<Integer> remainPossible = new ArrayList<Integer>();
     for (int i : s) {
       int check = 0;
@@ -47,7 +45,7 @@ public class Contest {
     return remainPossible;
   }
 
-  public void err(String toCheck, int index) {
+  private void err(String toCheck, int index) {
     for (int j = 0; j < 7; j++) {
       if (toCheck.charAt(j) == '0' && representations[index].charAt(j) == '1') {
         erro.add(j);
@@ -55,12 +53,18 @@ public class Contest {
     }
   }
 
+  /**
+   * Method to test the program.
+   * @param args unicorn-io
+   */
   public static void main(String [] args) {
+
     Scanner input = new Scanner(System.in);
     int numberOfTestCases = input.nextInt();
     int printer = numberOfTestCases;
 
     while (numberOfTestCases > 0) {
+
       Contest manual = new Contest();
       ArrayList<Integer> decoy;
       ArrayList<Integer> main2;
@@ -68,29 +72,28 @@ public class Contest {
 
       int numberOfStates = input.nextInt();
 
-      String deck = input.next();
-      checks.add(deck);
+      String deckCard = input.next();
+      checks.add(deckCard);
 
-      ArrayList<Integer> main = manual.possibilityOf("" + deck);
-      decoy = main;
+      decoy = manual.possibilityOf("" + deckCard);
 
       int index = 0;
 
       while (numberOfStates - 1 > 0) {
-        deck = input.next();
-        checks.add(deck);
-        main2 = manual.remains("" + deck, decoy);
+        deckCard = input.next();
+        checks.add(deckCard);
+        main2 = manual.remains("" + deckCard, decoy);
         decoy = main2;
         numberOfStates--;
       }
 
       if (decoy.size() != 1) {
-        System.out.println("Case" + " #" + (printer - numberOfTestCases + 1) + ": ERROR");
+        System.out.println("Case" + " #" + (printer - numberOfTestCases + 1) + ": ERROR!");
       } else {
         for (int o : decoy) {
           index = o;
         }
-        for (int k = checks.size() - 1; k > 0; k--) {
+        for (int k = checks.size() - 1; k >= 0; k--) {
           manual.err(checks.get(k), index);
           index = (index + 101) % 10;
         }
@@ -106,7 +109,4 @@ public class Contest {
       numberOfTestCases--;
     }
   }
-
-
-
 }
