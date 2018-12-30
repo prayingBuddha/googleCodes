@@ -52,7 +52,6 @@ public class super2048 {
         while (k <= i) {
           if (board[j][i - k] != 0) {
             if (board[j][i - k] == board[j][i]) {
-              // try {
               board[j][i] *= 2;
               board[j][i - k] = 0;
               for (int l = i - 1; l >= 0; l--) {
@@ -63,7 +62,6 @@ public class super2048 {
                 }
                 ;
               }
-              //  } catch (ArrayIndexOutOfBoundsException en) {};
             } else {
               if (k != 1) {
                 board[j][i - 1] = board[j][i - k];
