@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class KIaB2014 {
+public class super2048 {
   private int[][] board;
   private int[][] rotated;
   int size;
@@ -9,7 +9,7 @@ public class KIaB2014 {
     board[x][y] = n;
   }
 
-  private KIaB2014(int n) {
+  private super2048(int n) {
     size = n;
     board = new int[n][n];
   }
