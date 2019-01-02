@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Contest {
+public class SevenSegmentDisplay {
 
   private final String[] representations = {"1111110", "0110000", "1101101", "1111001", "0110011", "1011011", "1011111", "1110000", "1111111", "1111011"};
   private ArrayList<Integer> possibls = new ArrayList<Integer>();
