@@ -109,4 +109,5 @@ public class SevenSegmentDisplay {
       numberOfTestCases--;
     }
   }
+
 }
