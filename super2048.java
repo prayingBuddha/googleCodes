@@ -1,5 +1,5 @@
 // This is One of the Solutions to the Google KickStart!!
-
+// This requires a little fix and is under development
 import java.util.Scanner;
 
 public class super2048 {
